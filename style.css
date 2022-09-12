@@ -1,0 +1,243 @@
+body{
+    margin: 0 0 0;
+    text-align: center;
+}
+
+header{
+    background-color: #232c33/*#66DE93*/;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 17px 0 ;
+    height: 55px;
+    }
+
+.nome{
+    font-family: Sacramento;
+    position: relative;
+    font-size: 32px;
+}
+
+.lib{
+    color: #66DE93;
+}
+
+.nome p{
+    position:absolute;
+    top: -24px;
+}
+
+.nome .mana{
+    color: #F1ECC3;
+}
+
+.container ul li{
+    list-style-type: none;
+}
+
+
+.container .dip ul li{
+    padding: 7px;  
+}
+
+.block{
+    width: 100%;   
+}
+
+.container .block .searchlist{
+    display: flex;
+    justify-content: center;
+    margin-right: 190px;
+}
+.container .shower ul{
+    display: flex;
+    justify-content: space-around;
+    padding: 0 15px 0;
+}
+
+.menu ol {
+    display: flex;
+    justify-content: space-between;
+}
+.menu ol li{
+    list-style-type:none;
+    margin: 5px 9px 5px;
+    color:#F1ECC3;
+}
+
+/* before */
+.menu ol li a{
+    color:#F1ECC3;
+    text-decoration: none;
+    position: relative;
+  }
+
+.menu ol li a::before{
+    position: absolute;
+    content:'';
+    bottom: 0;
+    transition-property: width;
+    background: #F1ECC3;
+    width: 0;
+    height: 2px;
+    transition-timing-function: ease-in-out;
+    transition-duration: 500ms;
+  }
+  
+.menu ol li a:hover::before{
+    width: 100%;
+  }
+.menu ol li a:hover{
+    font-size: 20px;
+  }
+
+.container{
+    display: flex;
+    /*position: relative;*/
+    justify-content: space-between;
+}
+
+
+.shower ul li a{
+    /*border: solid black 1px;*/
+    border-radius: 5px;
+    padding: 2px 4px;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #1E90FF;
+    color: #fff;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
+
+}
+
+.biblioteche{
+    margin-left: 27px;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+.dip ul li{
+    color: #232c33;
+}
+
+ul li:hover, ul li:focus, ul li:active{
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+
+}
+
+.surcusale li.visited{
+    transform: scale(1.4);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+a{
+    text-decoration: none;  
+    color: black;
+    
+}
+
+.searchbar{
+    padding-right: 235px;
+    padding-top: 14px;
+    margin-left: 450px;
+    
+}
+
+
+.inp{
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 215px;
+    height: 20px;
+    padding: auto;
+    text-indent: 7px;
+    
+}
+
+
+.inp:focus{
+    outline: none;
+}
+.searchbar{
+    position: relative;
+}
+
+.ico{
+    position:absolute;
+    height: 22px;
+    width: 25px;
+    margin-left:-27px;
+    margin-top: 1px;
+}
+
+.go{
+    color: black;
+}
+
+footer{
+    margin-top:100px ;
+}
+
+form .surcusale input{
+    text-decoration: none;
+    border: 0px;
+    background-color: #fff;
+}
+
+footer{
+    margin-top:  730px;
+}
+
+
+.result2{
+    position: relative;
+    text-align: center;
+    top:10px;
+    right:0px;
+}
+
+.result3{
+    position: relative;
+    text-align: center;
+    top:10px;
+    right:0px;
+}
+.result4{
+    position: relative;
+    text-align: center;
+    top:10px;
+    right:0px;
+}
+
+
+.searchbar4{
+    display:flex;
+    justify-content: space-around;
+    width: 100%;
+
+}
+
+
+.searchbar5{
+    display:flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+#inserimento, #ricerca, #nolleggiare, #listanollegi{
+    text-align: center;
+    background: #F6FBF4/*#A5F1E9*/;
+    width: 170px;
+    height: 105%;
+    border: 1px solid black;
+    border-radius: 7px ;
+}
+
+
+#inserire{
+    text-align: center;
+}

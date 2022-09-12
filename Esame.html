@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Marvel&family=Montserrat:wght@100&family=Sacramento&family=Zen+Loop:ital@1&display=swap" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    
+ 
+    <title>Library Management</title>
+</head>
+
+<body>
+    <header>
+        <div class="nome"> 
+           <a href="Esame.html"><span class="lib">Library</span>  <span class="mana">management</span></a> 
+        </div>
+        <div class="menu">
+            <ol>
+                <li><a href="Esame.html">Home</a></li>
+                <li><a href="#"><li>Usage</a></li>
+                <li><a href="#">about us</a></li>
+
+            </ol>
+        </div>
+    </header>
+
+    <div class="container">
+         
+ 
+        <div class="block">
+
+            <div class="shower">
+                <nav>
+                    <ul class="navi">
+                        <li class="libri"  onclick="libri();"><a href="#">Libri</a></li>
+                        <li class="autori" onclick="autori();"><a href="#">Autori</a></li>
+                        <li class="utenti" onclick="utenti();"><a href="#">Utenti/Studenti</a></li>
+                        <li class="prestiti" onclick="prestiti();"><a href="#">Prestiti</a></li>
+                        <li class="Statistiche" onclick="statistiche();"><a href="#">Statistiche</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="searchlist">
+                <div class="searchbar">
+                    <form action="project_esame.php" method="post">
+                    <input type="text" placeholder="Search" name="statistiche" class="inp">
+                    <a href="#" class="go"><ion-icon name="search-outline" class="ico"></ion-icon></a> 
+                    <button type="submit" style="display:none" name="stats" class="stat"></button>
+                </form>
+                    </br>
+                    </br>
+                </div>
+            
+
+                <!-- searchbar2 -->
+                <div class="searchbar2" style="display: none;">
+                    <form action="project_esame.php" method="post">
+                        <label>Titolo</label>
+                        <input type="text" name="titolo" placeholder="Titolo" class="titolo">
+                        </br>
+                        <label class="scritto">Scritto Da</label>
+                        <input type="text" name="autore" placeholder="Autore" class="scritore">
+                            
+                        </br>
+                        <!-- <label class="public">Data Publicazione</label>
+                        <input type="date" name="data" id="data"> -->
+                            
+                    <!--     </br>
+
+                        <label>Lingua</label>
+                        <input type="text" name="lingua" placeholder="Lingua" class="lingua">
+                        </br>
+                        </br> -->
+                            <button type="submit" name = "Search2" class="search2"> Search </button>
+                    </form>
+                    <!-- <div class="result2"></div> -->
+                </div>
+
+                <!-- searchbar3 -->
+                <div class="searchbar3" style="display: none;">
+                    <form action="project_esame.php" method="post">
+                        <label>Nome Autori</label>
+                        <input type="text" placeholder="Nome" class="Nome" name="author">
+                        
+                    </br>
+                       <!--  <label>Data Nascita</label>
+                        <input type="date" name="" id="data">
+                        
+                    </br>
+                        <label>Luogo Nascita</label>
+                        <input type="text" placeholder="Luogo" class="Luogo">
+                        
+                    </br> -->
+                        <button type="submit" name = "Search3" class="search3"> Search </button>
+                    </form>
+                    <!-- <div class="result3"></div> -->
+                </div>
+
+                
+
+                <div class="searchbar4" style="display: none;">      
+
+                    <div id="inserimento">
+                        <a href="#" id="inserire" onclick="inserimento();">Inserire studente</a>
+                        <!-- <button id="inserire"> Inserire studente</button> -->
+                    </div>
+                    <div id="ricerca">
+                        <a href="#" id="ricstu" onclick="ricerca();">Ricerca studente</a>
+                        <!-- <button id="inserire"> Ricerca studente</button> -->
+                    </div>
+                </div>
+
+                <div class="searchbar5" style="display: none;">
+                    <!-- <form action="project_esame.php" method="post">
+                        <label>From</label>
+                        <input type="date" name="from" id="data">
+                        
+                    </br>
+                    <label>To</label>
+                        <input type="date" name="to" id="data">
+                        
+                    </br>
+                        <button type="submit" name = "Search5" class="search5"> Search </button>
+                    </form> -->
+                   
+                    <div id="nolleggiare">
+                        <a href="#" id="nolleggia" onclick="nolleggiare();">Prendere in prestito</a>
+                    </div>
+                    <div id="listanollegi">Lista Nolleggi</a>
+                    </div>
+
+                </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    
+    <div class="result"></div>
+    <div class="result2"></div>
+    <div class="result3"></div>
+    <div class="result4"></div>
+    <footer>
+        <p>Made by group 18</p>
+    </footer>
+    <script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
+
+
+ <!-- 
+<form method="post">
+    <ul class="surcusale">   
+        <li><input type="submit" id = "architettura" name="architettura" value="Architettura"></li>
+        <li><input type="submit" id = "eco" name="eco" value="economia e management"></li>
+        <li><input type="submit" id = "fisica"  name="fisica" value="Fisica e Scienze della Terra"></li>
+        <li><input type="submit" id = giurisprudenza" name="giurisprudenza" value="Giurisprudenza"></li>
+        <li><input type="submit" id = "ingegneria"  name="ingegneria" value="Ingegneria"></li>
+        <li><input type="submit" id = "matinf" name="matinf" value="Matematica e informatica"></li>
+        <li><input type="submit" id = "morfologia" name="morfologia" value="Morfologia chirurgia e medicina sperimentale"></li>
+        <li><input type="submit" id = "vita" name="vita" value="Scienze della vita e biotecnologie"></li>
+        <li><input type="submit" id = "mediche" name="mediche" value="Scienze mediche"></li>
+        <li><input type="submit" id = "biomediche" name="biomediche" value="Scienze biomediche e chirurgico specialistichetura"></li>
+        <li><input type="submit" id = "chimiche" name="chimiche" value="Scienze chimiche e farmaceutiche"></li>
+        <li><input type="submit" id = "umanistici" name="umanistici" value="Studi umanistici"></li>
+    </ul>
+</form>
+</div> -->
