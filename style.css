@@ -213,11 +213,31 @@ footer{
     right:0px;
 }
 
+img:hover{
+    cursor: pointer;
+}
+
+form#form, form#form1{
+    padding-right: 235px;
+    padding-top: 14px;
+    margin-left: 470px;
+}
+
+.searchlist{
+    position: relative;
+}
+#ward, #ward1{
+    position: relative;
+    left: -75%;
+    top:-8px;
+}
 
 .searchbar4{
     display:flex;
     justify-content: space-around;
     width: 100%;
+   /* margin-left: 200px;*/
+    
 
 }
 
@@ -228,7 +248,7 @@ footer{
     width: 100%;
 }
 
-#inserimento, #ricerca, #nolleggiare, #listanollegi{
+#inserimento, #ricerca, #nolleggiare, #listanolleggi{
     text-align: center;
     background: #F6FBF4/*#A5F1E9*/;
     width: 170px;

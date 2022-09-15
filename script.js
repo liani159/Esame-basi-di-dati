@@ -119,18 +119,24 @@ $(document).ready(function() {
 });
  */
 
+function removeElementPrestiti(){
+    
+    document.getElementById("form1").remove();
+    document.querySelector("#nolleggiare").style.display = "block";
+    document.querySelector("#listanolleggi").style.display = "block";
+    document.getElementById("ward1").remove();
+   
+}
+
 function removeElement(){
     
     document.getElementById("form").remove();
     document.querySelector("#inserimento").style.display = "block";
     document.querySelector("#ricerca").style.display = "block";
     document.getElementById("ward").remove();
-
-
-    
-
    
 }
+
 
 function inserimento(elemento,search){
     document.querySelector("#inserimento").style.display = "none";
@@ -159,8 +165,8 @@ function inserimento(elemento,search){
     labTel.innerText = "\n telefono";
     labInd.innerText = "\n Indirizzo";
     spazio.innerText = "\n";
-    backId.innerHTML = '<a onclick = "removeElement();" href="#"> back </a>';
-
+    //backId.innerHTML = '<a onclick = "removeElement();" href="#"> back </a>';
+    backId.innerHTML = '<img onclick = "removeElement();" width="30px" heigth="40px" src="retour.png" alt="back"> ';
 
     // create input fields
      var nome = document.createElement("input");
@@ -224,6 +230,8 @@ function inserimento(elemento,search){
 
 }
 
+
+// you need to create different button back
 function ricerca(){
     document.querySelector("#inserimento").style.display = "none";
     document.querySelector("#ricerca").style.display = "none";
@@ -244,8 +252,8 @@ function ricerca(){
     labNome.innerText = "Nome ";
     spazio.innerText = "\n";
 
-    backId.innerHTML = '<a onclick = "removeElement();" href="#"> back </a>';
-
+    //backId.innerHTML = '<a onclick = "removeElement();" href="#"> <img src="retour.png" alt="back"> </a>';
+    backId.innerHTML = '<img id ="back" onclick = "removeElement();" width="30px" heigth="40px" src="retour.png" alt="back">';
 
     // create input fields
      var nome = document.createElement("input");
@@ -270,11 +278,148 @@ function ricerca(){
 }
 
 function listaNolleggi(){
+    document.querySelector("#listanolleggi").style.display = "none";
+    document.querySelector("#nolleggiare").style.display = "none";
 
+    var backId = document.createElement("div");
+    backId.setAttribute("id", "ward1");
+ 
+
+    var labNome = document.createElement("label");
+    var labFrom = document.createElement("label");
+    var labTo= document.createElement("label");
+    var spazio = document.createElement("label");
+    
+
+    var form = document.createElement("form");
+    form.id = "form1"
+    form.setAttribute("method", "post");
+    form.setAttribute("action", "project_esame.php");
+
+    labNome.innerText = "Nome ";
+    labFrom.innerText = "\nfrom"
+    labTo.innerText = " \t To"
+    spazio.innerText = "\n";
+
+    //backId.innerHTML = '<a onclick = "removeElement();" href="#"> <img src="retour.png" alt="back"> </a>';
+    backId.innerHTML = '<img id ="back" onclick = "removeElementPrestiti();" width="30px" heigth="40px" src="retour.png" alt="back">';
+
+    // create input fields
+     var nome = document.createElement("input");
+     nome.setAttribute("type", "text");
+     nome.setAttribute("name", "Nome studente");
+     nome.setAttribute("placeholder", "Nome studente");
+
+     //from
+     var from = document.createElement("input");
+     from.setAttribute("type", "date");
+     from.setAttribute("name", "Data prestito");
+
+    //to
+    var to = document.createElement("input");
+    to.setAttribute("type", "date");
+    to.setAttribute("name", "To");
+
+     //submit button
+     var s = document.createElement("input");
+     s.setAttribute("type", "submit");
+     s.setAttribute("value", "Submit");
+
+    form.appendChild(labNome);
+    form.appendChild(nome);
+    form.appendChild(spazio);
+    form.appendChild(labFrom);
+    form.appendChild(from);
+    form.appendChild(spazio);
+    form.appendChild(labTo);
+    form.appendChild(to);
+    form.appendChild(spazio);
+    form.appendChild(s);
+
+    var x = document.querySelector('.searchbar5');
+    x.appendChild(form)
+
+    x.appendChild(backId);
 }
+
 
 function nolleggiare(){
 
+    document.querySelector("#listanolleggi").style.display = "none";
+    document.querySelector("#nolleggiare").style.display = "none";
+
+    var backId = document.createElement("div");
+    backId.setAttribute("id", "ward1");
+ 
+
+    var labMatricola = document.createElement("label");
+    var labLibro = document.createElement("label");
+    var dataPrestito = document.createElement("label");
+    var dataRitorno = document.createElement("label");
+    var spazio = document.createElement("label");
+    
+
+    var form = document.createElement("form");
+    form.id = "form1"
+    form.setAttribute("method", "post");
+    form.setAttribute("action", "project_esame.php");
+
+    labMatricola.innerText = "Matricola ";
+    labLibro.innerText = "\nLibro ";
+    dataPrestito.innerText = "\nData prestito"
+    dataRitorno.innerText = "\nData prestito"
+    spazio.innerText = "\n";
+
+    //backId.innerHTML = '<a onclick = "removeElement();" href="#"> <img src="retour.png" alt="back"> </a>';
+    backId.innerHTML = '<img id ="back" onclick = "removeElementPrestiti();" width="30px" heigth="40px" src="retour.png" alt="back">';
+
+    // create input fields
+     var matricola = document.createElement("input");
+     matricola.setAttribute("type", "text");
+     matricola.setAttribute("name", "matricola");
+     matricola.setAttribute("placeholder", "Matricola");
+
+     //nome libro input 
+     var libro = document.createElement("input");
+     libro.setAttribute("type", "text");
+     libro.setAttribute("name", "libro");
+     libro.setAttribute("placeholder", "libro");
+
+     //data prestito
+     var dataPrest = document.createElement("input");
+     dataPrest.setAttribute("type", "date");
+     dataPrest.setAttribute("name", "Data prestito");
+
+
+     //data ritorno
+    //data prestito
+    var dataRit = document.createElement("input");
+    dataRit.setAttribute("type", "date");
+    dataRit.setAttribute("name", "Data ritorno");
+
+     //submit button
+     var s = document.createElement("input");
+     s.setAttribute("type", "submit");
+     s.setAttribute("value", "Submit");
+
+    form.appendChild(labMatricola);
+    form.appendChild(matricola);
+    form.appendChild(spazio);
+    form.appendChild(labLibro);
+    form.appendChild(libro);
+    form.appendChild(spazio);
+    form.appendChild(dataPrestito);
+    form.appendChild(dataPrest);
+    form.appendChild(spazio);
+    form.appendChild(dataRitorno);
+    form.appendChild(dataRit);
+    form.appendChild(spazio);
+    form.appendChild(s);
+
+    var x = document.querySelector('.searchbar5');
+    x.appendChild(form)
+
+    x.appendChild(backId);
 }
  
 /* document.querySelector("#inserimento").style.heigth = "150px";
