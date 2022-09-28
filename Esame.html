@@ -39,7 +39,7 @@
                         <li class="autori" onclick="autori();"><a href="#">Autori</a></li>
                         <li class="utenti" onclick="utenti();"><a href="#">Utenti/Studenti</a></li>
                         <li class="prestiti" onclick="prestiti();"><a href="#">Prestiti</a></li>
-                        <li class="Statistiche" onclick="statistiche();"><a href="#">Statistiche</a></li>
+                        <li class="statistiche" onclick="statistiche();"><a href="#">Statistiche</a></li>
                     </ul>
                 </nav>
             </div>
@@ -66,18 +66,10 @@
                         <input type="text" name="autore" placeholder="Autore" class="scritore">
                             
                         </br>
-                        <!-- <label class="public">Data Publicazione</label>
-                        <input type="date" name="data" id="data"> -->
-                            
-                    <!--     </br>
-
-                        <label>Lingua</label>
-                        <input type="text" name="lingua" placeholder="Lingua" class="lingua">
-                        </br>
-                        </br> -->
+                        
                             <button type="submit" name = "Search2" class="search2"> Search </button>
                     </form>
-                    <!-- <div class="result2"></div> -->
+>
                 </div>
 
                 <!-- searchbar3 -->
@@ -87,17 +79,9 @@
                         <input type="text" placeholder="Nome" class="Nome" name="author">
                         
                     </br>
-                       <!--  <label>Data Nascita</label>
-                        <input type="date" name="" id="data">
-                        
-                    </br>
-                        <label>Luogo Nascita</label>
-                        <input type="text" placeholder="Luogo" class="Luogo">
-                        
-                    </br> -->
+                       
                         <button type="submit" name = "Search3" class="search3"> Search </button>
                     </form>
-                    <!-- <div class="result3"></div> -->
                 </div>
 
                 
@@ -106,26 +90,16 @@
 
                     <div id="inserimento">
                         <a href="#" id="inserire" onclick="inserimento();">Inserire studente</a>
-                        <!-- <button id="inserire"> Inserire studente</button> -->
+
                     </div>
                     <div id="ricerca">
                         <a href="#" id="ricstu" onclick="ricerca();">Ricerca studente</a>
-                        <!-- <button id="inserire"> Ricerca studente</button> -->
+
                     </div>
                 </div>
 
                 <div class="searchbar5" style="display: none;">
-                    <!-- <form action="project_esame.php" method="post">
-                        <label>From</label>
-                        <input type="date" name="from" id="data">
-                        
-                    </br>
-                    <label>To</label>
-                        <input type="date" name="to" id="data">
-                        
-                    </br>
-                        <button type="submit" name = "Search5" class="search5"> Search </button>
-                    </form> -->
+                    
                    
                     <div id="nolleggiare">
                         <a href="#" id="nolleggia" onclick="nolleggiare();">Prendere in prestito</a>
@@ -135,6 +109,35 @@
                     </div>
 
                 </div>
+
+                <div class="searchbar6" style="display: none;">
+                    <form action="project_esame.php" method="post">
+                        <label>Anno</label>
+                        <input type="text" placeholder="Anno per numero di libri publicati" class="annoPub" name="annoPub">
+                        </br>
+                        <label name="prestito">Numero di prestiti effetuati da:</label>
+
+                        <select class="numPrestiti" name="numPrestiti">    
+                            <option name="architettura" value="1"> Architettura</option>
+                            <option name="eco" value="2"> Economia e management </option>
+                            <option name="fisica" value="3"> Fisica e Scienze della Terra </option>
+                            <option name="giurisprudenza" value="4"> Giurisprudenza </option>
+                            <option name="ingegneria" value="5"> Ingegneria </option>
+                            <option name="matinf" value="6">Matematica e informatica </option>
+                            <option name="morfologia" value="7"> Morfologia chirurgia e medicina sperimentale </option>                      
+                            <option name="biomediche" value="8"> Scienze biomediche e chirurgico specialistichetura </option>
+                            <option name="chimiche" value="9"> Scienze chimiche e farmaceutiche </option>
+                            <option name="vita" value="10"> Scienze della vita e biotecnologie </option>
+                            <option name="mediche" value="11"> Scienze mediche </option>   
+                            <option name="umanistici" value="12"> Studi umanistici </option>
+                        </select>
+                    </br>
+                       
+                        <button type="submit" name = "visualizza" class="visualizza"> Vissualizza </button>
+                    </form>
+
+                </div>
+
                 </div>
             </div>
 
@@ -144,8 +147,9 @@
     
     <div class="result"></div>
     <div class="result2"></div>
-    <div class="result3"></div>
+    <div class="result3"> </div>
     <div class="result4"></div>
+    <div class="result5"></div>
     <footer>
         <p>Made by group 18</p>
     </footer>
@@ -155,23 +159,3 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
-
-
- <!-- 
-<form method="post">
-    <ul class="surcusale">   
-        <li><input type="submit" id = "architettura" name="architettura" value="Architettura"></li>
-        <li><input type="submit" id = "eco" name="eco" value="economia e management"></li>
-        <li><input type="submit" id = "fisica"  name="fisica" value="Fisica e Scienze della Terra"></li>
-        <li><input type="submit" id = giurisprudenza" name="giurisprudenza" value="Giurisprudenza"></li>
-        <li><input type="submit" id = "ingegneria"  name="ingegneria" value="Ingegneria"></li>
-        <li><input type="submit" id = "matinf" name="matinf" value="Matematica e informatica"></li>
-        <li><input type="submit" id = "morfologia" name="morfologia" value="Morfologia chirurgia e medicina sperimentale"></li>
-        <li><input type="submit" id = "vita" name="vita" value="Scienze della vita e biotecnologie"></li>
-        <li><input type="submit" id = "mediche" name="mediche" value="Scienze mediche"></li>
-        <li><input type="submit" id = "biomediche" name="biomediche" value="Scienze biomediche e chirurgico specialistichetura"></li>
-        <li><input type="submit" id = "chimiche" name="chimiche" value="Scienze chimiche e farmaceutiche"></li>
-        <li><input type="submit" id = "umanistici" name="umanistici" value="Studi umanistici"></li>
-    </ul>
-</form>
-</div> -->
