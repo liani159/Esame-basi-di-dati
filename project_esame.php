@@ -1,17 +1,10 @@
 <?php
 
-    $link = mysqli_connect("127.0.0.1", "liani", "password", "Biblioteca");
+    require_once 'connexion.php';
     $flag = 1;
     $flag2 = 1;
     $flagUtenti = 1;
-    if(!$link){
-        echo "si è verificato un errore durante la connessione al DB <br/>";
-        echo "codice errore: ". mysqli_connect_errno(). "<br/>";
-        echo "Messaggio errore: ". mysqli_connect_error() ."<br/>";
-        exit;
-    }
 
-    //$dati = json_decode($_POST["dati"], true);
 
     //Parte Libro
     if(isset($_POST["titolo"])||isset($_POST["nome"])){
@@ -93,12 +86,10 @@
             
         }
         if($flag){
-        //if(isset($_POST["titolo"])){
+
             $titolo = $_POST["titolo"];
-            if(!empty($titolo)){
-                // echo "Titolo: ".$titolo."\n";
-            
-                $titoloQuery = "SELECT TITOLO, ISBN_ID, ISBN, LINGUA, ANNO_PUB, NUM_COPIE  FROM LIBRI WHERE TITOLO='$titolo'";
+            if(!empty($titolo)){    
+                $titoloQuery = "SELECT TITOLO, ISBN_ID, ISBN, LINGUA, ANNO_PUB, NUM_COPIE  FROM LIBRI WHERE TITOLO REGEXP '^$titolo'";
                 $esecuzioneLibro = mysqli_query($link,$titoloQuery);
  
              echo "<table border=1 cellpadding=1 cellspacing=1 align=center width=100% >
@@ -136,7 +127,7 @@
                 WHERE(ISBN_ID IN (
                 SELECT ISBN_ID FROM SCRITTO_DA
                 WHERE(AUTORI_ID=(SELECT AUTORI_ID FROM AUTORI
-                WHERE NOME='$autore'))))
+                WHERE NOME = '$autore'))))
                 ORDER BY ANNO_PUB";
 
             $resultAutLibri = mysqli_query($link,$queryNome);
@@ -179,7 +170,7 @@
             echo "Autore: ".$author."\n";
             $queryDatiAut = "SELECT NOME, COGNOME, AUTORI_ID, DATA_NASCITA, LDN
             FROM AUTORI
-            WHERE NOME='$author'";
+            WHERE NOME REGEXP '^$author'";
 
             $resultAutDati = mysqli_query($link,$queryDatiAut);
 

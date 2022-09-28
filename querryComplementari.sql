@@ -156,6 +156,15 @@ SELECT A.NOME, A.COGNOME, COUNT(S.AUTORI_ID) AS LIBRI_PUBLICATI
 
 --
 
+-- test regexp
+
+SELECT NOME, COGNOME, AUTORI_ID, DATA_NASCITA, LDN
+            FROM AUTORI
+            WHERE NOME REGEXP "^F";
+            
+-- fine test regexp
+SELECT * FROM LIBRI WHERE TITOLO like 'su%';
+
 
 
 -- TEST
