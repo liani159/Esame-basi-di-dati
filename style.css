@@ -204,11 +204,11 @@ img:hover{
     cursor: pointer;
 }
 
-form.form, form.form1{
+/* form.form, form.form1{
     padding-right: 235px;
     padding-top: 14px;
     margin-left: 470px;
-}
+} */
 
 .searchlist{
     position: relative;
@@ -216,28 +216,21 @@ form.form, form.form1{
 #ward, #ward1{
     position: relative;
     left: -75%;
-    top:-8px;
+    top:-15px;
 }
 
-.searchbar4{
+.searchbar4, .searchbar5{
     display:flex;
     justify-content: space-around;
+    margin-left: -150px;
     width: 100%;
-   /* margin-left: 200px;*/
-    
 
 }
 
-
-.searchbar5{
-    display:flex;
-    justify-content: space-around;
-    width: 100%;
-}
 
 #inserimento, #ricerca, #nolleggiare, #listanolleggi{
     text-align: center;
-    background: #F6FBF4/*#A5F1E9*/;
+    background: #F6FBF4;
     width: 170px;
     height: 105%;
     border: 1px solid black;
@@ -247,4 +240,8 @@ form.form, form.form1{
 
 #inserire{
     text-align: center;
+}
+
+.del{
+    color: darkred;
 }

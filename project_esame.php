@@ -255,7 +255,9 @@
                  <th> COGNOME </th>
                  <th> MATRICOLA </th>
                  <th> TELEFONO </th>
-                 <th> INDIRIZZO </th>             
+                 <th> INDIRIZZO </th>
+                 <th> CANCELLA STUDENTE </th>
+
              </tr>";
  
              while($row = mysqli_fetch_array($resultRicerca, MYSQLI_ASSOC)){
@@ -265,6 +267,7 @@
                  echo "<td>" . $row["MATRICOLA"]. "</td>";
                  echo "<td>" . $row["TELEFONO"]. "</td>";
                  echo "<td>" . $row["INDIRIZZO"]. "</td>";
+                 echo "<td> <a href='#' class='del' onclick='deleteAjax(".$row['MATRICOLA'].");'> Delete </a> </td>";
                  echo "</tr>";
              }
              
@@ -283,24 +286,32 @@
                  <th> COGNOME </th>
                  <th> MATRICOLA </th>
                  <th> TELEFONO </th>
-                 <th> INDIRIZZO </th>             
+                 <th> INDIRIZZO </th>    
+                 <th> CANCELLA STUDENTE </th>         
              </tr>";
  
              while($row = mysqli_fetch_array($resultRicerca, MYSQLI_ASSOC)){
-                 echo "<tr>";
+                 echo "<tr id='delete".$row['MATRICOLA']."'>";
                  echo "<td>" . $row["NOME"]. "</td>";
                  echo "<td>" . $row["COGNOME"]. "</td>";
                  echo "<td>" . $row["MATRICOLA"]. "</td>";
                  echo "<td>" . $row["TELEFONO"]. "</td>";
                  echo "<td>" . $row["INDIRIZZO"]. "</td>";
+                 echo "<td> 
+                 <a href='#' class='del' onclick='deleteAjax(".$row['MATRICOLA'].");'> Delete </a> </td>";
                  echo "</tr>";
              }
              
              echo "</table>";
+            
+            //echo "slaaaaaaa2";     
          
-     }
+        }
     
     }
+    
+
+    
     // ENd Ricerca
 
 
@@ -395,7 +406,6 @@
          
         } 
         
-        //to check this query question
          if(!empty($_POST["matSt"]) && !empty($_POST["from"]) && !empty($_POST["to"])&& (strcmp($matSt, "*")!=0)){
             // we search the history of the in a precise range of date
             $storicoSingoloRange = "SELECT S.NOME , S.COGNOME, S.MATRICOLA, L.TITOLO, N.CODICE_UNIVOCO CU_LIBRO,

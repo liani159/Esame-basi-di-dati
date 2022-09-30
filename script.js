@@ -253,6 +253,7 @@ function inserimento(){
 
      var x = document.querySelector('.searchbar4');
      x.appendChild(form0)
+     document.querySelector('#form0').style.marginLeft = "28%";
      document.getElementById(form0.id).style.textAlign="center";
      x.appendChild(backId);
 
@@ -300,9 +301,11 @@ function ricerca(){
     form1.appendChild(spazio)
     form1.appendChild(s);
 
+    
+
      var x = document.querySelector('.searchbar4');
      x.appendChild(form1)
-
+     document.querySelector('#form1').style.marginLeft = "28%";
      x.appendChild(backId);
 
 }
@@ -367,8 +370,8 @@ function listaNolleggi(){
     form2.appendChild(s);
 
     var x = document.querySelector('.searchbar5');
-    x.appendChild(form2)
-
+    x.appendChild(form2);
+    document.querySelector('#form2').style.marginLeft = "28%";
     x.appendChild(backId);
 }
 
@@ -437,7 +440,7 @@ function nolleggiare(){
 
     var x = document.querySelector('.searchbar5');
     x.appendChild(form3)
-
+    document.querySelector('#form3').style.marginLeft = "28%";
     x.appendChild(backId);
 }
  
@@ -538,6 +541,30 @@ $(document).ready(function(){
             });
         })
 })
+
+
+/* //libri 2
+$(document).ready(function(){
+    $("#titolo").typeahead({
+        source:function(query, result){
+            $.ajax({
+                url:"autosuggest.php",
+                method:"POST",
+                data:{query:query},
+                dataType:"json",
+                success:function(data){
+                    result($.map(data, function(item){
+                        return item;
+                    }));
+                }
+
+            })
+        }
+    });
+
+
+}) */
+
 
 
 // Parte Autori
@@ -658,3 +685,30 @@ $(document).ready(function(){
             });
         })
 }) 
+
+
+function deleteAjax(matricule){
+    $(document).ready(function(){
+        console.log(matricule);
+        //if(confirm("are you sure ?")){
+            $.ajax({
+                type:"POST",
+                url:"delete.php",
+                data:{delete_mat:matricule},
+                success:function(response){
+                    console.log(response);
+                    alert("Cancellazione avvenuta con successo !");
+                    $("#delete"+matricule).hide();                                    
+                        
+                    },
+                error:function(e){
+                    alert("Impossibile di cancellare quello studente, forse ha fatto un nolleggio ultimamente\n"
+                    +"devi cancellare il Nollegio fatto prima");
+                    
+                }
+
+            });
+       // }
+    })
+}
+
