@@ -212,7 +212,6 @@
         $matricola = $_POST["matricola"];
         $telefono = $_POST["telefono"];
         $indirizzo = $_POST["indirizzo"];
-        echo $nomeStudente;
 
         if(!empty($_POST["nomeStudente"]) && !empty($_POST["cognomeStudente"]) && !empty($_POST["matricola"])
         && !empty($_POST["telefono"]) && !empty($_POST["indirizzo"])){
@@ -225,6 +224,7 @@
             $resultInsert = mysqli_query($link,$queryInsertStudente);
             if(!$resultInsert){
                 echo "Problema nell'inserimento dello studente";
+                
             }
             else{
                 echo "Succesfully inserted";
@@ -235,7 +235,7 @@
         else{
            
          //here we write the query 
-         echo "Devi compilare tutti i campi";
+         echo "DEVI COMPILARE TUTTI I CAMPI !!!";
          
      }
     
@@ -323,35 +323,61 @@
         $matricolaStudente = $_POST["matricolaStudente"];
         $titoloLibro = $_POST["titoloLibro"];
         $dataPrestito = $_POST["dataPrestito"];
-        //we will use a flag here to control it
+        
         if(!empty($_POST["matricolaStudente"]) && !empty($_POST["titoloLibro"])
             && !empty($_POST["dataPrestito"])){
                
-            //here we write the query 
+            // DISABLE THE FOREIGN KEY TO CANCEL DATA IN COPIA
+            mysqli_query($link,"SET FOREIGN_KEY_CHECKS=0;");
+            
+            //retreive il codice univoco della copia a togliere
+            $retreive = mysqli_query($link, "SELECT  C.CODICE_UNIVOCO CODICE_UNIVOCO
+                FROM COPIA C
+                LEFT JOIN LIBRI L
+                    ON C.ISBN_ID=L.ISBN_ID
+                WHERE L.TITOLO='$titoloLibro'
+                limit 1;");
+
+            $row = mysqli_fetch_array($retreive,MYSQLI_ASSOC);
+            $cu = $row['CODICE_UNIVOCO'];
+            echo "$cu";
+
             $queryNolleggio = "INSERT INTO NOLLEGGIA(MATRICOLA, CODICE_UNIVOCO, ISBN_ID, ID_BIBLIOTECA,
                 DATA_USCITA, DATA_RITORNO)
                 SELECT (SELECT MATRICOLA FROM STUDENTE
                     WHERE MATRICOLA='$matricolaStudente') , 
-                    C.CODICE_UNIVOCO CODICE_UNIVOCO, C.ISBN_ID ISBN_ID,
+                    '$cu', C.ISBN_ID ISBN_ID,
                     C.ID_BIBLIOTECA ID_BIBLIOTECA, '$dataPrestito', '$dataPrestito'+interval 30 day
                 FROM COPIA C
                 LEFT JOIN LIBRI L
                     ON C.ISBN_ID=L.ISBN_ID
                 WHERE L.TITOLO='$titoloLibro'
+                order by CODICE_UNIVOCO ASC
                 limit 1;";
 
-                // CANCELLO LA COPIA PER EVITARE DI NOLLEGGIARE LA STESSA
-                $queryCancellazioneCopi=0;
-
-
-            $resultNolleggio = mysqli_query($link,$queryNolleggio);
+            // CANCELLO LA COPIA PER EVITARE DI NOLLEGGIARE LA STESSA
             
-            if(!$resultNolleggio){
-                echo "Problema nell'inserimento dello studente";
+            // inserisco il nolleggio appena fatto
+            $resultNolleggio = mysqli_query($link,$queryNolleggio);
+            // lo cancello della table COPIA per non prenderlo di nuovo
+            //che è gia impegnato
+            $queryCancellazioneCopi= mysqli_query($link, "DELETE FROM COPIA WHERE CODICE_UNIVOCO='$cu';");
+
+
+            // RE-ENABLE THE FOREIGN KEY
+            mysqli_query($link,"SET FOREIGN_KEY_CHECKS=1;");
+
+            // to check again , dont work well
+            if($resultNolleggio>0){
+                echo "well done guy!" ;
+            }
+            else if($resultNolleggio==0){
+                echo "Siamo Spiacente tutti i libri con questo titolo sono gia impegnati e quello in tutte le biblioteca dell'universita !";
+                echo "Piacere di riprovare piu tardi !";
             }
             else{
-                echo "You've succefully rented the book :".$titoloLibro." ";
-
+                echo "Siamo Spiacente tutti i libri con questo titolo sono gia impegnati e quello in tutte le biblioteca dell'universita !";
+                echo "Piacere di riprovare piu tardi !";
             }
             
         }
@@ -365,11 +391,13 @@
         $matSt = $_POST["matSt"];
         $from = $_POST["from"];
         $to= $_POST["to"];
-        
+
+
+        // All rent
         if((strcmp($matSt, "*")==0) && empty($_POST["from"]) && empty($_POST["to"])){
             $flag2 = 0;
             $queryPrintStoricoAll = "SELECT S.NOME , S.COGNOME, S.MATRICOLA, L.TITOLO, N.CODICE_UNIVOCO CU_LIBRO,
-                    N.DATA_USCITA, N.DATA_RITORNO, B.NOME_BIBLIOTECA
+                    N.DATA_USCITA, N.DATA_RITORNO, B.NOME_BIBLIOTECA, B.ID_BIBLIOTECA ID_BIB, N.ISBN_ID ISBN_ID
                 FROM NOLLEGGIA N
                 LEFT JOIN  STUDENTE S
                    ON S.MATRICOLA= N.MATRICOLA
@@ -385,20 +413,24 @@
                    <th> COGNOME </th>
                    <th> TIT LIBRO </th>
                    <th> MATRICOLA </th>  
+                   <th> CU_LIBRO  </th>
                    <th> BILIOTECA_IMPEGNATA </th> 
                    <th> DATA_USCITA </th> 
-                   <th> DATA_RITORNO </th>          
+                   <th> DATA_RITORNO </th>  
+                   <th> CANCELLA NOLLEGGIO</th>        
                </tr>";
    
                while($row = mysqli_fetch_array($resultStoricoAll, MYSQLI_ASSOC)){
-                   echo "<tr>";
+                echo "<tr id='delNol".$row['CU_LIBRO']."'>";
                    echo "<td>" . $row["NOME"]. "</td>";
                    echo "<td>" . $row["COGNOME"]. "</td>";
                    echo "<td>" . $row["TITOLO"]. "</td>";
                    echo "<td>" . $row["MATRICOLA"]. "</td>";
+                   echo "<td>" . $row["CU_LIBRO"]. "</td>";
                    echo "<td>" . $row["NOME_BIBLIOTECA"]. "</td>";
                    echo "<td>" . $row["DATA_USCITA"]. "</td>";
                    echo "<td>" . $row["DATA_RITORNO"]. "</td>";
+                   echo "<td> <a href='#' class='del' onclick='deleteNolleggio(".$row['MATRICOLA'].",".$row["CU_LIBRO"].",".$row["ID_BIB"].",".$row["ISBN_ID"].");'> Delete </a> </td>";
                    echo "</tr>";
                }
                
@@ -423,7 +455,7 @@
    
                echo "<table border=1 cellpadding=1 cellspacing=1 align=center width=100% >
                <tr>
-                   <th> NOME 12 </th>
+                   <th> NOME </th>
                    <th> COGNOME </th>
                    <th> TIT LIBRO </th>
                    <th> MATRICOLA </th>   
@@ -465,7 +497,7 @@
    
                echo "<table border=1 cellpadding=1 cellspacing=1 align=center width=100% >
                <tr>
-                   <th> NOME 12 </th>
+                   <th> NOME </th>
                    <th> COGNOME </th>
                    <th> TIT LIBRO </th>
                    <th> MATRICOLA </th>   
@@ -505,7 +537,7 @@
     
                 echo "<table border=1 cellpadding=1 cellspacing=1 align=center width=100% >
                 <tr>
-                    <th> NOME 10 </th>
+                    <th> NOME </th>
                     <th> COGNOME </th>
                     <th> TIT LIBRO </th>
                     <th> MATRICOLA </th>  
@@ -546,7 +578,7 @@
     
                 echo "<table border=1 cellpadding=1 cellspacing=1 align=center width=100% >
                 <tr>
-                    <th> NOME 1 </th>
+                    <th> NOME </th>
                     <th> COGNOME </th>
                     <th> TIT LIBRO </th>
                     <th> MATRICOLA </th>  
@@ -589,7 +621,7 @@
             if($resultStoricoRangeDate ){
                echo "<table border=1 cellpadding=1 cellspacing=1 align=center width=100% >
                <tr>
-                   <th> NOME2 </th>
+                   <th> NOME </th>
                    <th> COGNOME </th>
                    <th> TIT LIBRO </th>
                    <th> MATRICOLA </th>  
@@ -673,7 +705,7 @@
     
                 echo "<table border=1 cellpadding=1 cellspacing=1 align=center width=100% >
                 <tr>
-                    <th> NOME 3 </th>
+                    <th> NOME </th>
                     <th> COGNOME </th>
                     <th> TIT LIBRO </th>
                     <th> MATRICOLA </th>  

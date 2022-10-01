@@ -476,7 +476,8 @@ $(document).ready(function(){
         
             },
             error:function(e){
-                $(".result3").html("Error occurred");
+                $(".result3").html("Error occurred !"+
+                "Forse quello studente esiste gia nella database !");
             }
             });
         })
@@ -622,7 +623,10 @@ $(document).ready(function(){
         
             },
             error:function(e){
-                $(".result4").html("Error occurred");
+                $(".result4").html("Error occurred, Registrati prima.")
+                 alert("E importante Notare che non si puo prendere in prestito un libro"+
+                " uno studente non registrato all universita!"+
+                "Registrati e riprova");
             }
             });
         })
@@ -712,3 +716,27 @@ function deleteAjax(matricule){
     })
 }
 
+
+function deleteNolleggio(matricola, cu, idBib, isbnId){
+    $(document).ready(function(){
+        console.log(matricola);
+        //if(confirm("are you sure ?")){
+            $.ajax({
+                type:"POST",
+                url:"delete.php",
+                data:{mat:matricola, cu:cu, idBib:idBib, isbnId:isbnId},
+                success:function(response){
+                    console.log(response);
+                    alert("Cancellazione avvenuta con successo !");
+                    $(".delNol"+cu).hide();                                    
+                        
+                    },
+                error:function(e){
+                    alert("Qualcosa è andato storto, Ricomminciare !");
+                    
+                }
+
+            });
+       // }
+    })
+}
