@@ -340,7 +340,7 @@
 
             $row = mysqli_fetch_array($retreive,MYSQLI_ASSOC);
             $cu = $row['CODICE_UNIVOCO'];
-            echo "$cu";
+            //echo "$cu";
 
             $queryNolleggio = "INSERT INTO NOLLEGGIA(MATRICOLA, CODICE_UNIVOCO, ISBN_ID, ID_BIBLIOTECA,
                 DATA_USCITA, DATA_RITORNO)
@@ -367,17 +367,16 @@
             // RE-ENABLE THE FOREIGN KEY
             mysqli_query($link,"SET FOREIGN_KEY_CHECKS=1;");
 
+            
             // to check again , dont work well
-            if($resultNolleggio>0){
-                echo "well done guy!" ;
-            }
-            else if($resultNolleggio==0){
-                echo "Siamo Spiacente tutti i libri con questo titolo sono gia impegnati e quello in tutte le biblioteca dell'universita !";
-                echo "Piacere di riprovare piu tardi !";
+            
+            if(!empty($cu)){
+                echo "Noleggio effetuato con successo!" ;
+                //echo mysqli_num_rows($resultNolleggio);
             }
             else{
-                echo "Siamo Spiacente tutti i libri con questo titolo sono gia impegnati e quello in tutte le biblioteca dell'universita !";
-                echo "Piacere di riprovare piu tardi !";
+                echo "Siamo Spiacente tutti i libri con questo titolo sono gia impegnati, e quello in tutte le biblioteca dell'universita !";
+                echo "</br>Piacere di riprovare piu tardi !";
             }
             
         }
