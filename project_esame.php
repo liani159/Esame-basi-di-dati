@@ -824,10 +824,56 @@
                 
                 }
             
+        }  
+    
+    }
+
+    //Parte statistiche aggiuntive
+    if(isset($_POST["niente"])){
+
+        // Stat 1: il Studente che ha fatto il piu prestiti
+        
+        $piuPrestiti = mysqli_query($link,"SELECT N.MATRICOLA, S.NOME, S.COGNOME, S.INDIRIZZO, S.TELEFONO,
+            COUNT(N.MATRICOLA) AS `TOTALE_LIBRI` 
+            FROM NOLLEGGIA N
+            LEFT JOIN STUDENTE S
+                ON N.MATRICOLA = S.MATRICOLA
+                GROUP BY N.MATRICOLA
+                ORDER BY `TOTALE_LIBRI` DESC
+                LIMIT 1;");
+
+        echo "<b>Studente con piu prestiti</b> </br>\n";
+        echo "</br>";
+        if(!$piuPrestiti){
+            echo "Non ci sone ancora prestiti effetuati. Quindi impossibile visualizzare
+            questo risultato.";
+        }
+        else{
+            echo "<table border=1 cellpadding=1 cellspacing=1 align=center width=100% >
+                <tr>
+                    <th> NOME </th>
+                    <th> COGNOME </th> 
+                    <th> MATRICOLA </th>
+                    <th> TELEFONO </th>
+                    <th> INDIRIZZO </th>
+                    <th> TOTALE LIBRI </th>                          
+                </tr>";
+      
+            while($row = mysqli_fetch_array($piuPrestiti, MYSQLI_ASSOC) ){
+                echo "<tr>";
+                echo "<td>" . $row["NOME"]. "</td>";
+                echo "<td>" . $row["COGNOME"]. "</td>"; 
+                echo "<td>" . $row["MATRICOLA"]. "</td>";
+                echo "<td>" . $row["TELEFONO"]. "</td>";
+                echo "<td>" . $row["INDIRIZZO"]. "</td>"; 
+                echo "<td>" . $row["TOTALE_LIBRI"]. "</td>";      
+                echo "</tr>";
+            }
+                  
+            echo "</table>";
+
         }
 
-       
-    
     }
 
    

@@ -8,10 +8,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Marvel&family=Montserrat:wght@100&family=Sacramento&family=Zen+Loop:ital@1&display=swap" rel="stylesheet">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     
+
     <title>Library Management</title>
 </head>
 
 <body>
+    
     <header>
         <div class="nome"> 
            <a href="Esame.html"><span class="lib">Library</span>  <span class="mana">management</span></a> 
@@ -19,8 +21,8 @@
         <div class="menu">
             <ol>
                 <li><a href="Esame.html">Home</a></li>
-                <li><a href="#"><li>Usage</a></li>
-                <li><a href="#">about us</a></li>
+                <li><a href="usage.html"><li>Usage</a></li>
+                <li><a href="aboutUs.html">about us</a></li>
 
             </ol>
         </div>
@@ -39,27 +41,21 @@
                         <li class="utenti" onclick="utenti();"><a href="#">Utenti/Studenti</a></li>
                         <li class="prestiti" onclick="prestiti();"><a href="#">Prestiti</a></li>
                         <li class="statistiche" onclick="statistiche();"><a href="#">Statistiche</a></li>
+                        <li class="aggiuntive" onclick="statisticheAggiuntive();"><a href="#">stats aggiuntive</a></li>
                     </ul>
                 </nav>
             </div>
 
+
             <div class="searchlist">
-                <div class="searchbar">
-                    <form action="project_esame.php" method="post">
-                    <input type="text" placeholder="Search" name="statistiche" class="inp">
-                    <a href="#" class="go"><ion-icon name="search-outline" class="ico"></ion-icon></a> 
-                    <button type="submit" style="display:none" name="stats" class="stat"></button>
-                </form>
-                    </br>
-                    </br>
-                </div>
-            
 
                 <!-- searchbar2 / Parte libri  --> 
                 <div class="searchbar2" style="display: none;">
                     <form action="project_esame.php" method="post">
                         <label>Titolo</label>
-                        <input type="text" name="titolo" placeholder="Titolo" class="titolo">
+                        <input type="text" name="titolo" placeholder="Titolo" class="form-control
+                        input-1g" autocomplete="off" id="titolo"
+                        >
                         <div id="here"></div>
                         <!-- </br> -->
                         <label class="scritto">Scritto Da</label>
@@ -143,17 +139,20 @@
         </div>
     </div>
 
-    
+    <p class="messaggio">All you need is just a book to unleash you mind</p>
+
     <div class="result"></div>
     <div class="result2"></div>
     <div class="result3"> </div>
     <div class="result4"></div>
     <div class="result5"></div>
+    <div class="result6"></div>
+
     <footer>
         <p>Made by group 18</p>
     </footer>
     <script src="script.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>

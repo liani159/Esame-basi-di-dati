@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Marvel&family=Montserrat:wght@100&family=Sacramento&family=Zen+Loop:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    
+
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="nome"> 
+           <a href="Esame.html"><span class="lib">Library</span>  <span class="mana">management</span></a> 
+        </div>
+        <div class="menu">
+            <ol>
+                <li><a href="Esame.html">Home</a></li>
+                <li><a href="usage.html"><li>Usage</a></li>
+                <li><a href="aboutUs.html">about us</a></li>
+            </ol>
+        </div>
+    </header>
+    <h1>How it work</h1>
+
+    <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+            <div class="swiper-slide"><img class="mySlides" src="main.png" style="width:100%">
+                <p>here is the main page</p>
+            </div>
+            <div class="swiper-slide"><img class="mySlides" src="init.png" style="width:100%">
+                <p>here you have the searching section for books</p>
+            </div>
+            <div class="swiper-slide"><img class="mySlides" src="result_main.png" style="width:100%">
+                <p>if you submit witouht inserting nothing, it will show you </br> all the book in the database</p>
+            </div>
+            <div class="swiper-slide"><img class="mySlides" src="titolo.png" style="width:100%">
+                <p>here you can insert the complete or not complete title of a book </br>and it will show you the result: the book(s)
+                </br> starting with the giving string </p>
+            </div>
+            <div class="swiper-slide"><img class="mySlides" src="scrito_da.png" style="width:100%">
+                <p>here you can print all the books write by a specific author by submitting, only his <b>complete name</b>
+                </br></p>
+            </div>
+            <div class="swiper-slide"><img class="mySlides" src="both.png" style="width:100%">
+                <p>you can also submit by entying both the title and the authors name as long 
+                </br> that the entered name is trully the author of the title book inserted
+                </p>
+            </div>
+            <div class="swiper-slide"><img class="mySlides" src="author.png" style="width:100%">
+                <p>by submitting a complete or incomplete name of authors, you can print </br>
+                all information about him/her of all authors with a name starting by the string entered
+                </p>
+            </div>
+            <div class="swiper-slide"><img class="mySlides" src="main_utenti.png" style="width:100%">
+                <p>here is the part reserved agli utenti</p>
+            </div>
+            <div class="swiper-slide"><img class="mySlides" src="insertStudent.png" style="width:100%">
+                <p>if you've clicked on inserire studente button </br> 
+                you'll have to registrate a new student, it will show a succesfully 
+                </br>inserted if all is gone correctly.</p>
+            </div>
+            <div class="swiper-slide"><img class="mySlides" src="showAllStudent.png" style="width:100%">
+                <p>if you've clicked on ricerca studente button </br> 
+                    you'll bring on this section. if you submit witouht write a name it will print
+                    </br> you all the registrated students and the possibility to delete them.
+                    
+                </p>
+            </div>
+            <div class="swiper-slide"><img class="mySlides" src="singlestudent.png" style="width:100%">
+                <p>otherwise if you wrote a <b>complete student name </b> it will show you 
+                </br>all informations about him and also the choice to delete him or not.</p>
+            </div>
+            <div class="swiper-slide"><img class="mySlides" src="main_prestiti.png" style="width:100%">
+                <p>here is the part reserved to the rent </p>
+            </div>
+            <div class="swiper-slide"><img class="mySlides" src="nolleggia.png" style="width:100%">
+                <p>
+                    you've clicked on Prendere in prestito button, and here you have to insert 
+                </br> all the require informations and submit it to rent a book
+                </br> you'll have a confirmation message.    
+            </p>
+            </div>
+            <div class="swiper-slide"><img class="mySlides" src="asterix.png" style="width:100%">
+                <p>here if you write "*" in the matrola input field, you will be print all
+                </br> the rent make , and you'll be able to delete them or not.
+                </p>
+            </div>
+            <div class="swiper-slide"><img class="mySlides" src="matricola_prest.png" style="width:100%">
+                <p>here you can write the registration number on a specifi student to show
+                    <br> his historical rent
+                </p>
+            </div>
+            <div class="swiper-slide"><img class="mySlides" src="range.png" style="width:100%">
+                <p>here you can insert a range of date to print all the rent make during this period.
+                </br>ps: you can also insert a particular reg number to show all his rent during the range selected.
+                </p>
+            </div>
+            <div class="swiper-slide"><img class="mySlides" src="stats.png" style="width:100%">
+                <p>Statisctical part, just insert a valid date and submit to print all
+                    </br>statistic basic informations</p>
+            </div>
+            <div class="swiper-slide"><img class="mySlides" src="aggiuntive.png" style="width:100%">
+                <p>here you have the extra statistical informations</p>
+            </div>
+
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+      
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
+      </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.swiper', {
+        
+        loop: true,
+
+        // If we need pagination
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+
+        // Navigation arrows
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        });
+    </script>
+</body>
+</html>

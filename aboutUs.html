@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Marvel&family=Montserrat:wght@100&family=Sacramento&family=Zen+Loop:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    
+
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="nome"> 
+           <a href="Esame.html"><span class="lib">Library</span>  <span class="mana">management</span></a> 
+        </div>
+        <div class="menu">
+            <ol>
+                <li><a href="Esame.html">Home</a></li>
+                <li><a href="usage.html"><li>Usage</a></li>
+                <li><a href="aboutUs.html">about us</a></li>
+            </ol>
+        </div>
+    </header>
+    <h1>About us</h1>
+
+    <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+            <div class="swiper-slide"><img class="mySlides" src="main.png" style="width:100%">
+                <p>here is the main page</p>
+            </div>
+            <div class="swiper-slide"><img class="mySlides" src="init.png" style="width:100%">
+                <p>here you have the searching section for books</p>
+            </div>
+            <div class="swiper-slide"><img class="mySlides" src="result_main.png" style="width:100%">
+                <p>if you submit witouht inserting nothing, it will show you </br> all the book in the database</p>
+            </div>
+
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+      
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
+      </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.swiper', {
+        autoplay:{
+            delay:3000,
+            disableOnInteraction: false,
+        },
+        loop: true,
+
+        // If we need pagination
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+
+        // Navigation arrows
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        });
+    </script>
+</body>
+</html>

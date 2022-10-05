@@ -8,17 +8,21 @@ function libri(){
     document.querySelector('.autori').style.transform = "scale(1.1)";
     document.querySelector('.prestiti').style.transform = "scale(1.1)";
     document.querySelector('.statistiche').style.transform = "scale(1.1)";
+    document.querySelector('.aggiuntive').style.transform = "scale(1.1)";
+
+    document.querySelector('footer').style.marginTop = "730px";
     /* document.querySelector('.libri').style.borderRadius = "5px";
     document.querySelector('.libri').style.color = "#fff"
     document.querySelector('.libri').style.backgroundColor = "#1E90FF"; */
 
 
-    document.querySelector(".searchbar").setAttribute("style", "display: none");
+    //document.querySelector(".searchbar").setAttribute("style", "display: none");
     document.querySelector(".searchbar3").setAttribute("style", "display: none");
     document.querySelector(".searchbar4").setAttribute("style", "display: none");
     document.querySelector(".searchbar5").setAttribute("style", "display: none");
     document.querySelector(".searchbar6").setAttribute("style", "display: none");
     document.querySelector(".searchbar2").setAttribute("style", "display: flex");
+    document.querySelector(".messaggio").setAttribute("style", "display: none");
 
     document.querySelector(".searchbar2").style.marginLeft = "150px"
     document.querySelector(".searchbar2").style.marginTop = "35px"
@@ -28,28 +32,34 @@ function libri(){
     document.querySelector(".result3").style.display = "none";
     document.querySelector(".result4").style.display = "none";
     document.querySelector(".result5").style.display = "none";
+    document.querySelector(".result6").style.display = "none";
 
 }
 
 
 function autori(){
+
+    document.querySelector('footer').style.marginTop = "730px";
+
     document.querySelector('.libri').style.transform = "scale(1.1)";
     document.querySelector('.utenti').style.transform = "scale(1.1)";
     document.querySelector('.autori').style.transform = "scale(1.9)";
     document.querySelector('.prestiti').style.transform = "scale(1.1)";
     document.querySelector('.statistiche').style.transform = "scale(1.1)";
+    document.querySelector('.aggiuntive').style.transform = "scale(1.1)";
     /* document.querySelector('.libri').style.borderRadius = "5px";
     document.querySelector('.libri').style.color = "#fff"
     document.querySelector('.libri').style.backgroundColor = "#1E90FF"; */
 
 
 
-    document.querySelector(".searchbar").setAttribute("style", "display: none");
+    //document.querySelector(".searchbar").setAttribute("style", "display: none");
     document.querySelector(".searchbar2").setAttribute("style", "display: none");
     document.querySelector(".searchbar4").setAttribute("style", "display: none");
     document.querySelector(".searchbar5").setAttribute("style", "display: none");
     document.querySelector(".searchbar6").setAttribute("style", "display: none");
     document.querySelector(".searchbar3").setAttribute("style", "display: flex");
+    document.querySelector(".messaggio").setAttribute("style", "display: none");
 
     document.querySelector(".searchbar3").style.marginLeft = "150px"
     document.querySelector(".searchbar3").style.marginTop = "35px"
@@ -59,27 +69,33 @@ function autori(){
     document.querySelector(".result3").style.display = "none";
     document.querySelector(".result4").style.display = "none";
     document.querySelector(".result5").style.display = "none";
+    document.querySelector(".result6").style.display = "none";
 
 }
 
 function utenti(){
+
+    document.querySelector('footer').style.marginTop = "730px";
+
     document.querySelector('.libri').style.transform = "scale(1.1)";
     document.querySelector('.utenti').style.transform = "scale(1.9)";
     document.querySelector('.autori').style.transform = "scale(1.1)";
     document.querySelector('.prestiti').style.transform = "scale(1.1)";
     document.querySelector('.statistiche').style.transform = "scale(1.1)";
+    document.querySelector('.aggiuntive').style.transform = "scale(1.1)";
    /*  document.querySelector('.libri').style.borderRadius = "5px";
     document.querySelector('.libri').style.color = "#fff"
     document.querySelector('.libri').style.backgroundColor = "#1E90FF"; */
 
 
 
-    document.querySelector(".searchbar").setAttribute("style", "display: none");
+    //document.querySelector(".searchbar").setAttribute("style", "display: none");
     document.querySelector(".searchbar2").setAttribute("style", "display: none");
     document.querySelector(".searchbar3").setAttribute("style", "display: none");
     document.querySelector(".searchbar5").setAttribute("style", "display: none");
     document.querySelector(".searchbar6").setAttribute("style", "display: none");
     document.querySelector(".searchbar4").setAttribute("style", "display: flex");
+    document.querySelector(".messaggio").setAttribute("style", "display: none");
 
     document.querySelector(".searchbar4").style.marginLeft = "150px"
     document.querySelector(".searchbar4").style.marginTop = "35px"
@@ -89,27 +105,33 @@ function utenti(){
     document.querySelector(".result3").style.display = "block";
     document.querySelector(".result4").style.display = "none";
     document.querySelector(".result5").style.display = "none";
+    document.querySelector(".result6").style.display = "none";
 }
 
 
 function prestiti(){
+
+    document.querySelector('footer').style.marginTop = "730px";
+
     document.querySelector('.libri').style.transform = "scale(1.1)";
     document.querySelector('.prestiti').style.transform = "scale(1.9)";
     document.querySelector('.autori').style.transform = "scale(1.1)";
     document.querySelector('.utenti').style.transform = "scale(1.1)";
     document.querySelector('.statistiche').style.transform = "scale(1.1)";
+    document.querySelector('.aggiuntive').style.transform = "scale(1.1)";
     /* document.querySelector('.libri').style.borderRadius = "5px";
     document.querySelector('.libri').style.color = "#fff"
     document.querySelector('.libri').style.backgroundColor = "#1E90FF"; */
 
 
 
-    document.querySelector(".searchbar").setAttribute("style", "display: none");
+    //document.querySelector(".searchbar").setAttribute("style", "display: none");
     document.querySelector(".searchbar2").setAttribute("style", "display: none");
     document.querySelector(".searchbar3").setAttribute("style", "display: none");
     document.querySelector(".searchbar5").setAttribute("style", "display: flex");
     document.querySelector(".searchbar6").setAttribute("style", "display: none");
     document.querySelector(".searchbar4").setAttribute("style", "display: none");
+    document.querySelector(".messaggio").setAttribute("style", "display: none");
 
     document.querySelector(".searchbar5").style.marginLeft = "150px"
     document.querySelector(".searchbar5").style.marginTop = "35px"
@@ -122,29 +144,97 @@ function prestiti(){
 }
 
 function statistiche(){
+
+    document.querySelector('footer').style.marginTop = "730px";
+
     document.querySelector('.libri').style.transform = "scale(1.1)";
     document.querySelector('.prestiti').style.transform = "scale(1.1)";
     document.querySelector('.autori').style.transform = "scale(1.1)";
     document.querySelector('.utenti').style.transform = "scale(1.1)";
     document.querySelector('.statistiche').style.transform = "scale(1.9)";
+    document.querySelector('.aggiuntive').style.transform = "scale(1.1)";
 
 
-    document.querySelector(".searchbar").setAttribute("style", "display: none");
+    //document.querySelector(".searchbar").setAttribute("style", "display: none");
     document.querySelector(".searchbar2").setAttribute("style", "display: none");
     document.querySelector(".searchbar3").setAttribute("style", "display: none");
     document.querySelector(".searchbar5").setAttribute("style", "display: none");
     document.querySelector(".searchbar6").setAttribute("style", "display: flex");
     document.querySelector(".searchbar4").setAttribute("style", "display: none");
+    document.querySelector(".messaggio").setAttribute("style", "display: none");
 
-    document.querySelector(".searchbar6").style.marginLeft = "150px"
-    document.querySelector(".searchbar6").style.marginTop = "35px"
+    document.querySelector(".searchbar6").style.marginLeft = "150px";
+    document.querySelector(".searchbar6").style.marginTop = "35px";
 
     document.querySelector(".result").style.display = "none";
     document.querySelector(".result2").style.display = "none";
     document.querySelector(".result3").style.display = "none";
     document.querySelector(".result4").style.display = "none";
     document.querySelector(".result5").style.display = "block";
+    document.querySelector(".result6").style.display = "none";
+    
 }
+
+function statisticheAggiuntive(){
+
+    document.querySelector('footer').style.marginTop = "730px";
+    
+    document.querySelector('.libri').style.transform = "scale(1.1)";
+    document.querySelector('.prestiti').style.transform = "scale(1.1)";
+    document.querySelector('.autori').style.transform = "scale(1.1)";
+    document.querySelector('.utenti').style.transform = "scale(1.1)";
+    document.querySelector('.statistiche').style.transform = "scale(1.1)";
+    document.querySelector('.aggiuntive').style.transform = "scale(1.9)";
+
+
+    //document.querySelector(".searchbar").setAttribute("style", "display: none");
+    document.querySelector(".searchbar2").setAttribute("style", "display: none");
+    document.querySelector(".searchbar3").setAttribute("style", "display: none");
+    document.querySelector(".searchbar5").setAttribute("style", "display: none");
+    document.querySelector(".searchbar6").setAttribute("style", "display: none");
+    document.querySelector(".searchbar4").setAttribute("style", "display: none");
+    document.querySelector(".messaggio").setAttribute("style", "display: none");
+
+    /* document.querySelector(".searchbar6").style.marginLeft = "150px";
+    document.querySelector(".searchbar6").style.marginTop = "35px"; */
+
+    document.querySelector(".result").style.display = "none";
+    document.querySelector(".result2").style.display = "none";
+    document.querySelector(".result3").style.display = "none";
+    document.querySelector(".result4").style.display = "none";
+    document.querySelector(".result5").style.display = "none";
+    document.querySelector(".result6").style.display = "block";
+
+
+    $(document).ready(function(){
+        var niente = 1;
+        console.log(niente);
+        //if(confirm("are you sure ?")){
+        $.ajax({
+            type:"POST",
+            url:"project_esame.php",
+            data:{niente:niente},
+            success:function(response){
+                console.log(response);
+                $(".result6").html(response);                                   
+                        
+                },
+            error:function(e){
+                alert("Qualcosa è andato storto, Ricomminciare !");
+                    
+            }
+
+            });
+       // }
+    })
+
+
+
+
+
+
+}
+
 
 
 function removeElementPrestiti(elt){
