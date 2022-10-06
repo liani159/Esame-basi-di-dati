@@ -10,7 +10,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     
 
-    <title>Document</title>
+    <title>About Us</title>
 </head>
 <body>
     <header>
@@ -27,18 +27,27 @@
     </header>
     <h1>About us</h1>
 
-    <div class="swiper">
+    <div class="swiper mySwiper">
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
           <!-- Slides -->
-            <div class="swiper-slide"><img class="mySlides" src="main.png" style="width:100%">
-                <p>here is the main page</p>
+            <div class="swiper-slide"><img class="mySlides" src="lian1.jpg" style="width:100%">
+                <p>Nome studente: Liani <br>
+                    Cognome: Dzeupa Mopi <br>
+                    Matricola:170189 <br>
+                    info: studente in terzo anno di informatica ,
+                    <br> facendo parte del groupo 18 ,in carico di questo proggetto di basi di dati.
+                </p>
             </div>
-            <div class="swiper-slide"><img class="mySlides" src="init.png" style="width:100%">
-                <p>here you have the searching section for books</p>
-            </div>
-            <div class="swiper-slide"><img class="mySlides" src="result_main.png" style="width:100%">
-                <p>if you submit witouht inserting nothing, it will show you </br> all the book in the database</p>
+            
+            <div class="swiper-slide"><img class="mySlides" src="jord.jpg" style="width:100%">
+                <p> Nome studente: Davy Jordan <br>
+                    Cognome: Medjialeu Nantcho <br>
+                    Matricola:171440 <br>
+                    info: studente in terzo anno di informatica ,
+                    <br> facendo parte del groupo 18 ,in carico di questo proggetto di basi di dati.
+
+                </p>
             </div>
 
         </div>
@@ -56,9 +65,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script>
-        const swiper = new Swiper('.swiper', {
+        const swiper = new Swiper('.mySwiper', {
         autoplay:{
-            delay:3000,
+            delay:6000,
             disableOnInteraction: false,
         },
         loop: true,

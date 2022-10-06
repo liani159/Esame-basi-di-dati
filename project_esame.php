@@ -167,7 +167,6 @@
     if(isset($_POST["author"])){
         $author = $_POST["author"];
         if(!empty($author)){
-            echo "Autore: ".$author."\n";
             $queryDatiAut = "SELECT NOME, COGNOME, AUTORI_ID, DATA_NASCITA, LDN
             FROM AUTORI
             WHERE NOME REGEXP '^$author'";
@@ -195,11 +194,7 @@
                   
             echo "</table>";
 
-        }/* 
-        else{
-            echo "all authors information";
-            // we print all the authors name here
-        }  */  
+        }
     
     }
 
@@ -873,6 +868,10 @@
             echo "</table>";
 
         }
+
+        //Stat2 biblioteca che ha avuto piu richieste di prestiti
+
+        //-- to do 
 
     }
 
