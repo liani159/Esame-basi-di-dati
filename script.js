@@ -141,6 +141,7 @@ function prestiti(){
     document.querySelector(".result3").style.display = "none";
     document.querySelector(".result4").style.display = "block";
     document.querySelector(".result5").style.display = "none";
+    document.querySelector(".result6").style.display = "none";
 }
 
 function statistiche(){
@@ -663,7 +664,7 @@ $(document).ready(function(){
     $('.search3').click(function(event){    
         event.preventDefault();
         var author= $("input[name=author]").val() ;
-        
+        //console.log(author);
 
         var authorData = {author:author}
 
@@ -769,7 +770,7 @@ $(document).ready(function(){
             success:function(response){
                 console.log("data submitted correctly");
 
-                console.log(response);
+                //console.log(response);
                 document.querySelector(".result5").innerHTML = response;
         
             },
@@ -780,11 +781,11 @@ $(document).ready(function(){
         })
 }) 
 
-
+// delete a student
 function deleteAjax(matricule){
     $(document).ready(function(){
         console.log(matricule);
-        //if(confirm("are you sure ?")){
+        if(confirm("are you sure ?")){
             $.ajax({
                 type:"POST",
                 url:"delete.php",
@@ -792,7 +793,8 @@ function deleteAjax(matricule){
                 success:function(response){
                     console.log(response);
                     alert("Cancellazione avvenuta con successo !");
-                    $("#delete"+matricule).hide();                                    
+                    $("#delete"+matricule).hide();   
+                    console.log("#delete"+matricule);                                 
                         
                     },
                 error:function(e){
@@ -802,15 +804,15 @@ function deleteAjax(matricule){
                 }
 
             });
-       // }
+        }
     })
 }
 
-
+// delete a rent
 function deleteNolleggio(matricola, cu, idBib, isbnId){
     $(document).ready(function(){
         console.log(matricola);
-        //if(confirm("are you sure ?")){
+        if(confirm("are you sure ?")){
             $.ajax({
                 type:"POST",
                 url:"delete.php",
@@ -818,7 +820,7 @@ function deleteNolleggio(matricola, cu, idBib, isbnId){
                 success:function(response){
                     console.log(response);
                     alert("Cancellazione avvenuta con successo !");
-                    $(".delNol"+cu).hide();                                    
+                    $("#delNol"+cu).hide();                                    
                         
                     },
                 error:function(e){
@@ -827,6 +829,78 @@ function deleteNolleggio(matricola, cu, idBib, isbnId){
                 }
 
             });
-       // }
+        }
     })
 }
+
+
+/* only autocomplete
+$( function() {
+    
+    $("#autocomplete" ).autocomplete({
+        
+        source: function( request, response ) {
+            console.log("salutation");
+            $.ajax({
+                url: "autosuggest.php",
+                type: 'post',
+                dataType: "json",
+                data: {
+                    search: request.term
+                },
+                success: function( data ) {
+                    response( data );
+                    console.log("salutation");
+                },
+                error: function (xhr, textStatus, errorThrown){
+                    console.log("error: " + errorThrown+ " " + textStatus);
+                }
+            });
+        },
+        select: function (event, ui) {
+            //console.log("salutation");
+            $('#autocomplete').val(ui.item.label); 
+            //$('#autocomplete').tokenInput(ui.item.label);// display the selected text
+            return false;
+        },
+        focus: function(event, ui){
+            $( "#autocomplete" ).val( ui.item.label);
+            return false;
+        },
+    });
+}); */
+
+// autocomplete with many parameter.
+//Sugerisce i nomi degli autori cominciando con i carateri inseriti nell input field
+
+$('#autocomplete').tokenfield({
+    
+    autocomplete: {
+
+        source: function( request, response ) {
+            $.ajax({
+                url: "autosuggest.php",
+                type: 'post',
+                dataType: "json",
+                data: {
+                    search: request.term
+                },
+                success: function( data ) {
+                    response( data );
+                },
+                error: function (xhr, textStatus, errorThrown){
+                    console.log("error: " + errorThrown+ " " + textStatus);
+                }
+            })
+        },
+
+      delay: 100   
+
+    },
+
+    showAutocompleteOnFocus: false, 
+
+}); 
+
+
+

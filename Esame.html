@@ -5,9 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Marvel&family=Montserrat:wght@100&family=Sacramento&family=Zen+Loop:ital@1&display=swap" rel="stylesheet">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
+    <!-- tokenfield  -->
+     <!-- Css Files-->
+
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"> 
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/css/bootstrap-tokenfield.min.css">
+
+
+
+  <!-- JS Files -->
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/bootstrap-tokenfield.js"></script>
+
+
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Marvel&family=Montserrat:wght@100&family=Sacramento&family=Zen+Loop:ital@1&display=swap" rel="stylesheet">
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     -->
 
     <title>Library Management</title>
 </head>
@@ -53,9 +74,7 @@
                 <div class="searchbar2" style="display: none;">
                     <form action="project_esame.php" method="post">
                         <label>Titolo</label>
-                        <input type="text" name="titolo" placeholder="Titolo" class="form-control
-                        input-1g" autocomplete="off" id="titolo"
-                        >
+                        <input type="text" name="titolo" placeholder="Titolo" id="titolo">
                         <div id="here"></div>
                         <!-- </br> -->
                         <label class="scritto">Scritto Da</label>
@@ -71,13 +90,15 @@
                 <div class="searchbar3" style="display: none;">
                     <form action="project_esame.php" method="post">
                         <label>Nome Autori</label>
-                        <input type="text" placeholder="Nome" class="Nome" name="author">
+                        <input type="text" placeholder="Nome" id="autocomplete" 
+                         name="author">
                         
                     </br>
                        
                         <button type="submit" name = "Search3" class="search3"> Search </button>
                     </form>
                 </div>
+                
 
                 
 

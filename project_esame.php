@@ -165,11 +165,13 @@
 
     // Parte Autori
     if(isset($_POST["author"])){
-        $author = $_POST["author"];
+        $search = mysqli_real_escape_string($link,$_POST["author"]);
+        $author = str_replace(", ","|", $search);
+        //Ricerca degli autori con i nomi cominciando con quello inserito nell'input.
         if(!empty($author)){
             $queryDatiAut = "SELECT NOME, COGNOME, AUTORI_ID, DATA_NASCITA, LDN
             FROM AUTORI
-            WHERE NOME REGEXP '^$author'";
+            WHERE NOME REGEXP '^($author)'";
 
             $resultAutDati = mysqli_query($link,$queryDatiAut);
 
@@ -211,7 +213,7 @@
         if(!empty($_POST["nomeStudente"]) && !empty($_POST["cognomeStudente"]) && !empty($_POST["matricola"])
         && !empty($_POST["telefono"]) && !empty($_POST["indirizzo"])){
 
-            //here we write the query 
+            //here we write the query : inserisce lo studente nella DB
             $queryInsertStudente = "INSERT INTO STUDENTE VALUES('$matricola', '$nomeStudente', '$cognomeStudente',
              '$indirizzo', '$telefono')";
 
@@ -226,10 +228,9 @@
             }
             
         }
-
+            // se non compilla tutti i campi
         else{
            
-         //here we write the query 
          echo "DEVI COMPILARE TUTTI I CAMPI !!!";
          
      }
@@ -240,6 +241,7 @@
     if(isset($_POST["nomeStud"])){
         $nomeStud = $_POST["nomeStud"];
 
+        //Stampa uno studente ben preciso, quello del nome inserito
         if(!empty($nomeStud)){
             $queryRicercaStudente = "SELECT * FROM STUDENTE WHERE NOME='$nomeStud'";
             $resultRicerca = mysqli_query($link,$queryRicercaStudente);
@@ -270,8 +272,9 @@
         }
 
         else {
-           // we print all student of the library
-         //here we write the query 
+        // Stampa tutti i studenti nella DB se no precisiamo uno in particolare
+        // e ci permette de li cancellare .
+         
             $queryRicercaStudente = "SELECT * FROM STUDENTE";
             $resultRicerca = mysqli_query($link,$queryRicercaStudente);
  
@@ -297,22 +300,16 @@
                  echo "</tr>";
              }
              
-             echo "</table>";
-            
-            //echo "slaaaaaaa2";     
+             echo "</table>";    
          
         }
     
     }
-    
-
-    
     // ENd Ricerca
 
 
+
     //Parte Nolleggi
-    // ne pas oublier de controller si le matricule qui
-    //veut louer le livre correspond avec celui d un etudiant dans la BD
     if(isset($_POST["matricolaStudente"]) && isset($_POST["titoloLibro"])
         && isset($_POST["dataPrestito"])){
         $matricolaStudente = $_POST["matricolaStudente"];
@@ -387,7 +384,8 @@
         $to= $_POST["to"];
 
 
-        // All rent
+        // All rent: ti presenta tutti i prestiti fatto non importa la data 
+        //Da la possibilita di cancello
         if((strcmp($matSt, "*")==0) && empty($_POST["from"]) && empty($_POST["to"])){
             $flag2 = 0;
             $queryPrintStoricoAll = "SELECT S.NOME , S.COGNOME, S.MATRICOLA, L.TITOLO, N.CODICE_UNIVOCO CU_LIBRO,
@@ -431,7 +429,8 @@
                echo "</table>";
          
         } 
-        
+        // se non riempiamo gli input qua ci fa la ricerca sul range di date dato in ingresso e quello per lo studente di cui
+        // e stato inserito la matricola
          if(!empty($_POST["matSt"]) && !empty($_POST["from"]) && !empty($_POST["to"])&& (strcmp($matSt, "*")!=0)){
             // we search the history of the in a precise range of date
             $storicoSingoloRange = "SELECT S.NOME , S.COGNOME, S.MATRICOLA, L.TITOLO, N.CODICE_UNIVOCO CU_LIBRO,
@@ -473,7 +472,8 @@
                echo "</table>";
          
         }
-
+        // qua non abbiamo intrato una matricola
+        //qui facciamo la ricerca su un range di date per tutti i prestiti gia fatti 
         if(empty($_POST["matSt"]) && !empty($_POST["from"]) && !empty($_POST["to"])){
             // we search the history of the in a precise range of date
             $storicoSingoloRange = "SELECT S.NOME , S.COGNOME, S.MATRICOLA, L.TITOLO, N.CODICE_UNIVOCO CU_LIBRO,
@@ -515,6 +515,7 @@
                echo "</table>";
          
         }
+        //qua abbiamo solo insertito la matricola di uno studente quindi stampiamo i sui prestiti fatti non importa il periodo
          if(!empty($_POST["matSt"]) && (strcmp($matSt, "*")!=0) && (!$flag2)){
             //$flag2 = 0;
             $queryPrintStorico = "SELECT S.NOME , S.COGNOME, L.TITOLO, S.MATRICOLA,
@@ -555,7 +556,9 @@
                 echo "</table>";
             
         } 
-
+        // peccato ! mi sono dimenticato cos ho scritto, pensaci, lol
+        // dovrebbe eesere la ricerca dei prestiti di uno studente
+        //e il flag sembra servire a impedire di stampare 2 volte il messaggi quello della query qua sopra e questa giu, si!
         if(!empty($_POST["matSt"]) && (strcmp($matSt, "*")!=0) && (!$flag2)){
             //$flag2 = 0;
             $queryPrintStorico = "SELECT S.NOME , S.COGNOME, L.TITOLO, S.MATRICOLA,
@@ -596,7 +599,7 @@
                 echo "</table>";
             
         } 
-
+        // qua stampa tutti i prestiti fatti effetuati in un range di date per tutti i studenti avendo effetuato prestiti
         if(!empty($_POST["from"]) && !empty($_POST["to"]) && !(strcmp($matSt, "*")!=0) ){
             
             $queryStoricoRangeDate = "SELECT S.NOME , S.COGNOME, S.MATRICOLA, L.TITOLO, N.CODICE_UNIVOCO CU_LIBRO,
@@ -639,6 +642,7 @@
                echo "</table>";}
          
         }
+        // qua non abbiamo inserito nulla quindi ci stampa i prestiti che si terminano nei giorni successivi
        else if(empty($_POST["matSt"]) && empty($_POST["from"]) && empty($_POST["to"])){
             
             $storicoProssScadenze = "SELECT S.NOME , S.COGNOME, S.MATRICOLA, B.NOME_BIBLIOTECA, L.TITOLO, N.CODICE_UNIVOCO CU_LIBRO,
@@ -682,7 +686,7 @@
                echo "</table>";}
          
         }
-
+        //qua ci stanpa solemente i prestiti di uno studente preciso di cui e stato inserito la matricola
         if(!empty($_POST["matSt"]) && (strcmp($matSt, "*")!=0) && empty($_POST["from"]) && empty($_POST["to"]) ){
             //$flag2 = 0;
             $queryPrintStorico = "SELECT S.NOME , S.COGNOME, L.TITOLO, S.MATRICOLA,
@@ -732,9 +736,9 @@
     if(isset($_POST["annoPub"]) && isset($_POST["numPrestiti"])){
         $annoPub = $_POST["annoPub"];
         $numPrestiti = $_POST["numPrestiti"];
-        //we will use a flag here to control it
+        
         if(!empty($_POST["annoPub"]) && !empty($_POST["numPrestiti"])){
-               //$flag = 0;
+
                 $publicati = "SELECT IFNULL(L.ANNO_PUB, 'NOT VALID DATE') ANNO_PUBLICAZZIONE ,  IFNULL(SUM(L.NUM_COPIE),'0') AS NUMERO_COPIE
                 FROM LIBRI L
                 WHERE L.ANNO_PUB ='$annoPub';";
@@ -749,13 +753,19 @@
                         ON S.AUTORI_ID = A.AUTORI_ID
                     GROUP BY S.AUTORI_ID
                     ;";
-
+                //Query per contare i numeri di libri publicati nell'anno inserito in input
                 $resultPublicati = mysqli_query($link,$publicati);
+                //Query per contare i numeri di di prestiti nell dipartimento scelto in select
                 $resultNumPrestiti = mysqli_query($link,$prestiti);
+                //Query per contare i numeri di libri publicati nper autori
                 $resultNumLibriAutori = mysqli_query($link,$numLibriAutori);
 
+                //se tutto bene stampiamo le stats
                if($resultPublicati && $resultNumPrestiti && $resultNumLibriAutori){
+                
     
+                echo "\n <br>";
+                echo "NUMERO DI LIBRI PUBLICATI";
                 echo "<table border=1 cellpadding=1 cellspacing=1 align=center width=100% >
                   <tr>
                       <th> ANNO PUBLICAZIONE </th>
@@ -837,6 +847,16 @@
                 ORDER BY `TOTALE_LIBRI` DESC
                 LIMIT 1;");
 
+        // Stat 2: Studente con piu prestiti
+        $bibMaxPrestiti = mysqli_query($link,"SELECT B.NOME_BIBLIOTECA, B.ID_BIBLIOTECA, B.CITTA, B.VIA, B.CAP, B.NUMERO_CIVICO
+            , COUNT(N.ID_BIBLIOTECA) AS 'TOTALE_PRESTITI'
+            FROM  NOLLEGGIA N 
+            LEFT JOIN BIBLIOTECA B
+                ON N.ID_BIBLIOTECA = B.ID_BIBLIOTECA
+            GROUP BY N.ID_BIBLIOTECA
+            ORDER BY 'TOTALE_PRESTITI' DESC
+            LIMIT 1;");
+
         echo "<b>Studente con piu prestiti</b> </br>\n";
         echo "</br>";
         if(!$piuPrestiti){
@@ -867,9 +887,39 @@
                   
             echo "</table>";
 
+            //Stat2 biblioteca che ha avuto piu richieste di prestiti
+            echo "<br> \n";
+            echo "<b>Biblioteca con piu prestiti</b></br>\n";
+            echo "</br> \n";
+
+            echo "<table border=1 cellpadding=1 cellspacing=1 align=center width=100% >
+                <tr>
+                    <th> NOME BIBLIOTECA </th>
+                    <th> ID BIBLIOTECA </th> 
+                    <th> CITA </th>
+                    <th> VIA </th>
+                    <th> CAP </th>
+                    <th> NUMERO CIVICO </th> 
+                    <th> TOTALE PRESTITI </th>                         
+                </tr>";
+      
+            while($row = mysqli_fetch_array($bibMaxPrestiti, MYSQLI_ASSOC) ){
+                echo "<tr>";
+                echo "<td>" . $row["NOME_BIBLIOTECA"]. "</td>";
+                echo "<td>" . $row["ID_BIBLIOTECA"]. "</td>"; 
+                echo "<td>" . $row["CITTA"]. "</td>";
+                echo "<td>" . $row["VIA"]. "</td>";
+                echo "<td>" . $row["CAP"]. "</td>"; 
+                echo "<td>" . $row["NUMERO_CIVICO"]. "</td>"; 
+                echo "<td>" . $row["TOTALE_PRESTITI"]. "</td>";      
+                echo "</tr>";
+            }
+                  
+            echo "</table>";
+
         }
 
-        //Stat2 biblioteca che ha avuto piu richieste di prestiti
+        
 
         //-- to do 
 
